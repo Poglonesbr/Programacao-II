@@ -9,7 +9,7 @@
   "dependencies": {
     "express": "^4.21.2"
   },
-  "author": "",
+  "author": "Pedro Henrique",
   "license": "ISC",
   "description": "Aqui vai ter alguns trabalhos ou aulas de programação da matéria Programação 2"
 }
