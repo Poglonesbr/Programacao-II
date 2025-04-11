@@ -19,12 +19,21 @@ Criar um frontend básico para testar e visualizar os resultados da API de forma
 
 ## Passo a Passo de Execução
 
-**1. Clonar o Repositório:**
+**1. Clonar o Repositório ou Sair da Pasta Geral:**
    Primeiro, você precisa clonar o repositório para o seu ambiente local.
    ```sh
    git https://github.com/Poglonesbr/Programacao-II.git
-   cd Programa_o-II
+   cd Programa-o-II
    ```
+   ou pode utilizar do arquivo .zip mas utilizando o comando 
+   ```sh
+   cd Programa-o-II
+   ```
+   ou pode utilizar do arquivo .zip mas removendo a pasta 
+   ```sh
+   Programacao-II-main
+   ```
+
 
 **2. Instalar Dependências:**
    Instale as dependências do projeto usando npm.
