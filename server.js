@@ -10,17 +10,14 @@ app.get('/api/:date?', (req, res) => {  // Define qual a rota (endpoint, caminho
     // ?: Indica que o parâmetro :date é opcional. Se não for fornecido, a rota ainda funcionará (por exemplo, /api/).
 
     let dateParam = req.params.date; // Pega o valor da URL (do app.get ali de cima), que pode ser uma data (o 2023-10-01 do UTC) ou timestamp (os numero todo estranho).
-    let timezone = req.query.tz || 'UTC'; // Pega o valor do timezone (ou seja, o fuso horário) que ta na URL (ou seja, o ?tz=UTC) e se não tiver nada, vai ser UTC mesmo (ou seja, o padrão).
     let date; // Cria a variavel (se precisou da explicação, saia do curso)
     
     if (!dateParam) {
         date = new Date(); // Se não digitarem nada, pega a data atual
     } else if (!isNaN(dateParam)) {
         date = new Date(parseInt(dateParam)); // Se for só numero vai converter para data (ou seja, se for timestamp vira data)
-        console.log("Else if");
     } else {
         date = new Date(dateParam); // Se for uma string (tipo 2023-10-01) vai converter pra data (ou seja, se for UTC vira timestamp)
-        console.log("Else");
     }
 
     if (isNaN(date.getTime())) { // Verifica se a data é inválida 
@@ -29,11 +26,11 @@ app.get('/api/:date?', (req, res) => {  // Define qual a rota (endpoint, caminho
 
     function getDiaDaSemana(date) {
         const diasDaSemana = ["Dom", "Seg", "Ter", "Quar", "Qui", "Sex", "Sáb"];
-        const data = new Date(date);
+        const data = new Date(date); // Fiz pra pegar o dia da semana pra ficar bonitinho que nem o do GMT padrão, mas no horário local
         const diaDaSemana = data.getDay();
         return diasDaSemana[diaDaSemana];
     }
-    const diaDaSemana = getDiaDaSemana(date); // Chama a função getDiaDaSemana (que ta ali em cima) pra pegar o dia da semana (ou seja, se é segunda, terça, etc) e passa a data (ou seja, o timestamp ou a string) pra função (ou seja, a data que o usuário digitou)
+    const diaDaSemana = getDiaDaSemana(date); // Chama a função getDiaDaSemana (que ta ali em cima)
 
     const response = { // Cria um objeto com os dados, horarios, como queira chamar, que vão ser enviados como resposta (por isso response, uau)
         unix: date.getTime(), // Pega o timestamp (o numero todo estranho) da data
@@ -43,7 +40,6 @@ app.get('/api/:date?', (req, res) => {  // Define qual a rota (endpoint, caminho
     };
     
     res.json(response); // Envia a resposta em formato JSON (O Varela explicou o que é JSON em alguma aula, mas to com preguiça de explicar)
-    const now = new Date();
 });
 
 
