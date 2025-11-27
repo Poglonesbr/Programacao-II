@@ -79,3 +79,24 @@ probs = model.predict(padded)
 class_names = ['Negativo:', 'Positivo:']
 for index, frase in enumerate(frases_avaliacao):
   print(class_names[round(probs[index][0])], probs[index], frase)
+
+print("\n### Etapa 7 - Salvando modelo e tokenizer")
+# Salva o modelo treinado
+model.save('modelo_sentimentos.h5')
+print("Modelo salvo como 'modelo_sentimentos.h5'")
+
+# Salva o tokenizer
+import pickle
+with open('tokenizer.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+print("Tokenizer salvo como 'tokenizer.pickle'")
+
+# Salva configurações
+config = {
+    'max_length': max_length,
+    'padding_type': padding_type,
+    'trunc_type': trunc_type
+}
+with open('config.pickle', 'wb') as handle:
+    pickle.dump(config, handle, protocol=pickle.HIGHEST_PROTOCOL)
+print("Configurações salvas como 'config.pickle'")

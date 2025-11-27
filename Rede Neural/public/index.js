@@ -1,5 +1,6 @@
 const phrase = document.querySelector('#phrase');
-const submitButton = document.querySelector('#submitButton')
+const submitButton = document.querySelector('#submitButton');
+const output = document.querySelector('.output');
 
 submitButton.addEventListener('click', async () => {
     try {
@@ -16,3 +17,4 @@ submitButton.addEventListener('click', async () => {
         alert("Erro ao processar a requisição");
     }
 })
+
